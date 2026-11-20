@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Lab — photo to poster cover</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <header class="brand">
+    <div class="brand-mark" aria-hidden="true">NC</div>
+    <div class="brand-words">
+      <h1>Neon Coast Cover Lab</h1>
+      <p>Your photo in, a neon-coast poster cover out. Everything runs on this device — photos are never uploaded.</p>
+    </div>
+    <div class="brand-badge">OFFLINE<br>READY</div>
+  </header>
+
+  <main class="layout">
+    <section class="stage-wrap">
+      <canvas id="stage" width="1080" height="1080" aria-label="Cover preview"></canvas>
+      <p class="hint">Drag a panel to move its photo &middot; scroll over the cover to zoom the selected panel &middot; click a panel to select it.</p>
+    </section>
+
+    <aside class="controls" aria-label="Cover controls">
+      <fieldset class="group">
+        <legend>1 &middot; Photos</legend>
+        <div class="thumbs" id="sampleThumbs"></div>
+        <label class="file-pick">Add your own photos
+          <input id="ownPhotos" type="file" accept="image/*" multiple>
+        </label>
+        <div class="row">
+          <button id="fillAll" type="button">Fill every panel with the selected photo</button>
+        </div>
+        <p class="note" id="photoNote">Tip: pick a panel below, then a photo to drop into it.</p>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>2 &middot; Layout</legend>
+        <div class="seg" id="layoutSeg" role="group" aria-label="Panel layout"></div>
+        <div class="row">
+          <button id="shuffleBtn" type="button">Shuffle the look</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>3 &middot; Panel</legend>
+        <div class="seg wrap" id="panelTabs" role="group" aria-label="Choose panel"></div>
+        <label class="ctl">Photo
+          <select id="panelPhoto"></select>
+        </label>
+        <label class="ctl">Panel look
+          <select id="panelGrade">
+            <option value="sunset">Sunset grade</option>
+            <option value="neon">Neon grade</option>
+            <option value="noir">Noir</option>
+            <option value="clean">Clean</option>
+          </select>
+        </label>
+        <label class="ctl">Zoom <input id="panelZoom" type="range" min="1" max="2.8" step="0.01"></label>
+        <label class="ctl">Move across <input id="panelX" type="range" min="0" max="1" step="0.005"></label>
+        <label class="ctl">Move down <input id="panelY" type="range" min="0" max="1" step="0.005"></label>
+        <label class="check"><input id="panelFlip" type="checkbox"> Mirror the photo</label>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>4 &middot; Caption</legend>
+        <label class="ctl">Title
+          <input id="captionText" type="text" maxlength="42" value="Neon Run">
+        </label>
+        <label class="ctl">Kicker line
+          <input id="subtitleText" type="text" maxlength="52" value="One night on the coast">
+        </label>
+        <label class="ctl">Title size <input id="titleSize" type="range" min="0.65" max="1.45" step="0.01"></label>
+        <label class="ctl">Title sits
+          <select id="titlePos">
+            <option value="bottom">Bottom</option>
+            <option value="top">Top</option>
+          </select>
+        </label>
+        <div class="swatches" id="accentSwatches" role="group" aria-label="Lettering colour"></div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>5 &middot; Export</legend>
+        <label class="ctl">Overall grade <input id="gradeAll" type="range" min="0" max="1" step="0.01"></label>
+        <label class="check"><input id="grainToggle" type="checkbox" checked> Film grain</label>
+        <label class="check"><input id="frameToggle" type="checkbox" checked> Poster frame</label>
+        <div class="seg" id="sizeSeg" role="group" aria-label="Export size"></div>
+        <button id="exportBtn" class="export" type="button">Export PNG</button>
+        <p class="note" id="status" role="status"></p>
+      </fieldset>
+    </aside>
+  </main>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
